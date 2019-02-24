@@ -1,4 +1,8 @@
 export {
   Container,
   Button
-} from './app'
+} from './app';
+
+export {
+  Input
+} from './input';

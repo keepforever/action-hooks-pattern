@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Button } from "../styles";
+import { Button } from "../styles";
 
 import { useIncrement, useDecrement, useCount } from "../state/count";
 
@@ -10,12 +10,12 @@ export default () => {
   const increment = useIncrement();
   const decrement = useDecrement();
 
-  console.log("Counter.js, count = ", count);
+  // console.log("Counter.js, count = ", count);
   return (
-    <Container>
+    <div>
       <h1>count: {count}</h1>
       <Button onClick={increment}>(+) INC</Button>
       <Button onClick={decrement}>(-) DEC</Button>
-    </Container>
+    </div>
   );
 };
