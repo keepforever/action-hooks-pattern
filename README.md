@@ -1,3 +1,80 @@
+### This simple application demonstrates the compose-ability of React hooks by implementing:
+
+1. Global State via `useContext()`
+2. Custom Hook to increment a counter
+3. Custom Hook to implement a text input
+
+### Typically, you would initialize a state object in a class based component, then, you would write a handler function, like
+```js
+
+state = {
+  values: {
+    someKey: "someValue"
+  }
+}
+
+// ...
+onChangeText = (key, value) => {
+  this.setState(state => ({
+    values: {
+      ...state.values,
+      [key]: value
+    }
+  }));
+};
+
+// ...
+<textarea
+  value={text}
+  onChange={e => {
+    this.onChangeText("text", e.target.value);
+  }}
+/>
+```
+
+### The problem with this approach is that the <code>onChangeText()</code> logic would need to be repeated in every single component in which you wanted to implement a `<textarea />`.  
+
+### With hooks, after setting up context/global store, we can access the global state and augment it with our custom hook by simply importing the hook into any component with a text area, like so:
+
+```js
+
+import React from "react";
+import { Input } from "../styles";
+
+import { useText, useChangeText } from "../state/input";
+
+export default () => {
+
+  // in order for useText to be reusable across various inputs, each
+  // input will need a unique identifier (i.e. "alpha") so we know which key in the
+  // global store object to retrieve.
+  const text = useText("alpha");
+  // likewise, change text needs a key value (i.e "alpha") to know which
+  // value of the state to set.
+  const changeText = useChangeText();
+
+  console.log('TextInput, text = ', text, '\n' )
+
+  return (
+      <Input
+        onChange={(e) => {
+          console.log('e.target.value = ', e.target.value, '\n' )
+          changeText("alpha", e.target.value)}}
+        value={text}
+        type="text"
+      />
+  );
+};
+```
+
+## Pull the repo for yourself and give it a go!
+
+
+
+# Everything below here is the boiler README.md
+<hr />
+<hr />
+
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
 ## Available Scripts
