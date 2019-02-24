@@ -4,10 +4,7 @@ import { Container, Button } from "../styles";
 import { useIncrement, useDecrement, useCount } from "../state/count";
 
 export default () => {
-  // console.log('store.useStore() = ', store.useStore(), '\n' )
-
   const count = useCount()
-
   // useIncrement() gives us back a function that we can use
   // to update global state. Wah-lah! A custom hook!
   const increment = useIncrement();

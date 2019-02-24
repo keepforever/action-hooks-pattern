@@ -1,12 +1,12 @@
 import React from "react";
-import Counter from './comps/Counter'
-
+import Counter from "./comps/Counter";
 import store from "./store";
 
-export default ( ) => {
+export default () => {
+  const { Provider } = store;
   return (
-    <store.Provider initialValue={{count: 0}}>
+    <Provider initialValue={{ count: 0 }}>
       <Counter />
-    </store.Provider>
-  )
+    </Provider>
+  );
 };
