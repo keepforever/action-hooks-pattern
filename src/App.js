@@ -7,7 +7,7 @@ import store from "./store";
 
 const initialState = {
   count: 0,
-  text: "initial text"
+  alpha: "initial text"
 };
 
 export default () => {
