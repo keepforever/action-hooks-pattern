@@ -15,6 +15,17 @@ export const useIncrement = () => {
     }));
 };
 
+export const useAsyncIncrement = () => {
+  // compose this hook out of the hook above
+  const increment = useIncrement();
+  // don't need the store here because useIncrement has it.
+
+  return async () => {
+    await new Promise(resolve => setTimeout(resolve, 1500));
+    increment()
+  }
+};
+
 export const useDecrement = () => {
   // use the store
   const { useStore } = store;
